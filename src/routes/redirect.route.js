@@ -8,5 +8,6 @@ const router = express.Router();
 
 router.route('/api/:origem/:rota').get(makeCallback(redirectController.redirectGet));
 router.route('/api/:origem/:rota').post(makeCallback(redirectController.redirectPost));
+router.route('/api/:origem/:rota').put(makeCallback(redirectController.redirectPut));
 
 export default router;
