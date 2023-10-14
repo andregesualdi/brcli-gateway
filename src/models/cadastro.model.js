@@ -10,7 +10,7 @@ class Cadastro {
     }
 
     static updatePaciente(req) {
-        return `UPDATE pacientes SET nomeAcesso = '${req.usuario}', senha = '${req.senha}' WHERE codigoAcesso = '${req.codigo}`;
+        return `UPDATE pacientes SET nomeAcesso = '${req.usuario}', senha = '${req.senha}' WHERE codigoAcesso = '${req.codigo}';`;
     }
 }
 

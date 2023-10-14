@@ -9,7 +9,15 @@ export default function makeCadastroDb({Cadastro}) {
         return response;
     }
 
+    async function cadastrarPaciente(request) {
+        const db = mysql.createPool(Configuration.conn);
+        const query = Cadastro.updatePaciente(request);
+        const response = db.query(query);
+        return response;
+    }
+
     return Object.freeze({
-        validarCodigoAcesso
+        validarCodigoAcesso,
+        cadastrarPaciente
     });
 }
