@@ -6,10 +6,7 @@ export default function makeRedirectGet(gateway) {
         const origem = params['origem'];
         const rota = params['rota'];
         const bearerToken = headers['authorization'];
-        let redirectHeaders = {
-            accept: headers['accept'],
-            connection: headers['connection']
-        }
+        let redirectHeaders;
         let url = origem === "mobile" ? Configuration.urlMobile : Configuration.urlDesktop;
         url = url.concat(`/${rota}`);
         let objetoDecodificado;
@@ -30,13 +27,12 @@ export default function makeRedirectGet(gateway) {
 
         if (objetoDecodificado.type === "paciente") {
             redirectHeaders = {
-                ...redirectHeaders,
                 'codigo-paciente': objetoDecodificado.id
             }
         } else {
             redirectHeaders = {
-                ...redirectHeaders,
-                'codigo-usuario': objetoDecodificado.id
+                'codigo-usuario': objetoDecodificado.id,
+                'codigo-paciente': headers['codigo-paciente']
             }
         }
 
