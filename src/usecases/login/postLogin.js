@@ -3,7 +3,7 @@ import Configuration from "../../config.js";
 import { Login } from "../../models/index.js";
 
 export default function makePostLogin(db) {
-    return async function cadastrarEditarPacientes({body}) {
+    return async function login({body}) {
         const request = body;
         const response = await db.validarLogin(request);
         if (response[0].length > 0) {
