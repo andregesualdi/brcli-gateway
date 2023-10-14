@@ -12,14 +12,14 @@ export default function makePostLogin(db) {
                 id: id,
                 type: "nutricionista"
             }, Configuration.secret, { expiresIn: 1800 });
-            return new Login(token, true, "nutricionista");
+            return new Login(token, true, "nutricionista", 1800);
         } else if (response[1].length > 0) {
             const id = response[1][0].idPaciente;
             const token = jwt.sign({
                 id: id,
                 type: "paciente"
             }, Configuration.secret, { expiresIn: 1800 });
-            return new Login(token, true, "paciente");
+            return new Login(token, true, "paciente", 1800);
         } else {
             throw "Forbidden";
         }

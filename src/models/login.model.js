@@ -2,11 +2,13 @@ class Login {
     constructor(
         access_token,
         authorized,
-        userType
+        userType,
+        expiresIn
     ) {
         this.access_token = access_token;
         this.authorized = authorized;
         this.userType = userType;
+        this.expiresIn = expiresIn;
     }
 
     static selectLoginFromUsuario(req) {
