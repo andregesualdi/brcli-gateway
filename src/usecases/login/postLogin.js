@@ -9,13 +9,15 @@ export default function makePostLogin(db) {
         if (response[0].length > 0) {
             const id = response[0][0].id;
             const token = jwt.sign({
-                id: id
+                id: id,
+                type: "nutricionista"
             }, Configuration.secret, { expiresIn: 1800 });
             return new Login(token, true, "nutricionista");
         } else if (response[1].length > 0) {
             const id = response[1][0].idPaciente;
             const token = jwt.sign({
-                id: id
+                id: id,
+                type: "paciente"
             }, Configuration.secret, { expiresIn: 1800 });
             return new Login(token, true, "paciente");
         } else {

@@ -29,9 +29,17 @@ export default (controller) => async (req, res) => {
                     success: false,
                     code: 403,
                     error: {
-                        description: e
+                        description: e.message ? e.message : e
                     }
-                })
+                });
+            } else if (e === "Unauthorized") {
+                res.status(401).send({
+                    success: false,
+                    code: 401,
+                    error: {
+                        description: e.message ? e.message : e
+                    }
+                });
             } else {
                 res.status(500).send({
                     success: false,
