@@ -12,7 +12,7 @@ export default function makePostLogin(db) {
                 id: id,
                 type: "nutricionista"
             }, Configuration.secret, { expiresIn: 1800 });
-            return new Login(token, true, "nutricionista", 1800);
+            return new Login(token, true, "nutricionista", 7200);
         } else if (response[1].length > 0) {
             const id = response[1][0].idPaciente;
             const token = jwt.sign({
