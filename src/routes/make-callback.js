@@ -41,7 +41,6 @@ export default (controller) => async (req, res) => {
                     }
                 });
             } else {
-                console.log(e);
                 res.status(500).send({
                     success: false,
                     code: 500,
