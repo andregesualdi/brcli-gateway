@@ -31,8 +31,12 @@ export default function makeRedirectPut(gateway) {
                 'codigo-paciente': objetoDecodificado.id
             }
         } else {
+            redirectHeaders = headers['codigo-paciente'] ? {
+                'codigo-paciente': headers['codigo-paciente']
+            } : {};
+
             redirectHeaders = {
-                'codigo-paciente': headers['codigo-paciente'],
+                ...redirectHeaders,
                 'codigo-usuario': objetoDecodificado.id
             }
         }

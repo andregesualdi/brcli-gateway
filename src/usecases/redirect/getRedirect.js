@@ -30,9 +30,14 @@ export default function makeRedirectGet(gateway) {
                 'codigo-paciente': objetoDecodificado.id
             }
         } else {
-            redirectHeaders = {
-                'codigo-usuario': objetoDecodificado.id,
+            redirectHeaders = headers['codigo-paciente'] ? {
                 'codigo-paciente': headers['codigo-paciente']
+            } : {};
+
+            redirectHeaders = {
+                ...redirectHeaders,
+                'codigo-usuario': objetoDecodificado.id,
+                'data-agenda': headers['data-agenda']
             }
         }
 
